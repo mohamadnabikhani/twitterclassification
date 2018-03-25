@@ -238,7 +238,7 @@ tweet/
 tweet3/
 .idea/
 s.png
-
+local_setting.py
 
 
 # End of https://www.gitignore.io/api/vim,python,pycharm,jetbrains,virtualenv

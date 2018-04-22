@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import json
 import pprint
+import clean_data
+import emojies
+import re
 
 reformist = open('reformist.json', 'r')
 principlist = open('principlist.json', 'r')
@@ -16,11 +21,17 @@ principlist_str = ''
 
 for i in reformist_json:
     for j in i:
-        reformist_str =reformist_str + j
+        new_format = clean_data.remove_url(j)
+        reformist_str = reformist_str + new_format + '\n'
+
 
 for i in principlist_json:
     for j in i:
-        principlist_str = principlist_str + j
+        new_format = clean_data.remove_url(j)
+        principlist_str = principlist_str + new_format + '\n'
+
+principlist_str = re.sub(emojies.emojies_re, "", principlist_str)
+reformist_str = re.sub(emojies.emojies_re, "", reformist_str)
 
 reformist_text.write(reformist_str.encode('utf-8'))
 reformist_text.close()
